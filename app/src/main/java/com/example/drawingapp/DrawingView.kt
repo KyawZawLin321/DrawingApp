@@ -1,5 +1,6 @@
 package com.example.drawingapp
 
+import android.R
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
@@ -92,8 +93,22 @@ class DrawingView(context: Context,attrs: AttributeSet): View(context,attrs) {
             newSize,resources.displayMetrics)
         drawPaint.strokeWidth=brushSize
     }
-    fun setColor(newColor: String){
-        drawPaint.color= newColor.toColorInt()
+    fun setColor(newColor: Any){
+        if(newColor is String){
+            color = Color.parseColor(newColor)
+            drawPaint.color = color
+        }else{
+            color = newColor as Int
+            drawPaint.color = color
+
+        }
+
+    }
+    fun undoPath(){
+        if(paths.isNotEmpty()){
+            paths.removeAt(paths.size-1)
+            invalidate()
+        }
     }
     internal inner class FingerPath(var color:Int, var brushThickness: Float): Path()
 }
