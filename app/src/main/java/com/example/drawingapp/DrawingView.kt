@@ -12,6 +12,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.createBitmap
+import androidx.core.graphics.toColorInt
 
 class DrawingView(context: Context,attrs: AttributeSet): View(context,attrs) {
     private lateinit var drawPath: FingerPath
@@ -90,6 +91,9 @@ class DrawingView(context: Context,attrs: AttributeSet): View(context,attrs) {
             TypedValue.COMPLEX_UNIT_DIP,
             newSize,resources.displayMetrics)
         drawPaint.strokeWidth=brushSize
+    }
+    fun setColor(newColor: String){
+        drawPaint.color= newColor.toColorInt()
     }
     internal inner class FingerPath(var color:Int, var brushThickness: Float): Path()
 }
