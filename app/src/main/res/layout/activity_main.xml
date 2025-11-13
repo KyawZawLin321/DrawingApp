@@ -7,24 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <FrameLayout
         android:id="@+id/linear_l1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_above="@id/linear_l2">
+        android:layout_height="0dp"
+        android:layout_above="@id/linear_l3"
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/gallery_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/image" />
 
         <com.example.drawingapp.DrawingView
             android:id="@+id/drawing_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+
 
 
     <androidx.appcompat.widget.LinearLayoutCompat

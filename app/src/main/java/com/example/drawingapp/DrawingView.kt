@@ -95,7 +95,7 @@ class DrawingView(context: Context,attrs: AttributeSet): View(context,attrs) {
     }
     fun setColor(newColor: Any){
         if(newColor is String){
-            color = Color.parseColor(newColor)
+            color = newColor.toColorInt()
             drawPaint.color = color
         }else{
             color = newColor as Int
